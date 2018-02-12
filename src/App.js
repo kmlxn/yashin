@@ -180,12 +180,12 @@ class App extends Component {
               onChange={event => this.setState({ input: event.target.value })}
             ></textarea>
           </div>
-          <div className="col-xs-3" style={{ textAlign: 'right' }}>          
+          <div className="col-xs-3" style={{ textAlign: 'right', marginTop: '30px' }}>          
             <button
               className="btn btn-primary"
               onClick={event => this.run()}>Bajarish</button>
           </div>
-          <div className="col-xs-3">              
+          <div className="col-xs-3" style={{ marginTop: '30px' }}>              
             <button
               className="btn btn-primary"
               onClick={event => this.test()}>Tekshirish</button>
