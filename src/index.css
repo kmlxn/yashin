@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Consolas, 'Courier New', monospace;
   font-size: 16px;
 }
 
@@ -11,6 +11,8 @@ body {
 
 .form-control {
   font-size: 16px;
+  background-color: #fdf6e3;
+  font-family: Consolas, 'Courier New', monospace;
 }
 
 .CodeMirror {
@@ -26,6 +28,7 @@ pre {
   border: unset;
   font-family: Consolas, 'Courier New', monospace;
   font-size: 16px;
+  background-color: #fdf6e3;
 }
 
 .glyphicon.fast-right-spinner {
