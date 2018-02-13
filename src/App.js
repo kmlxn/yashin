@@ -73,9 +73,7 @@ class App extends Component {
       }));
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
-    const results = responses.map((res, index) => (
-      console.log(res),
-      {
+    const results = responses.map((res, index) => ({
       ...tests[index],
       ...res.data,
       requestError: res.error,
@@ -147,7 +145,6 @@ class App extends Component {
       languages.map(({ id, name}) => <option key={id} value={id}>{name}</option>)
     const exerciseOptions =
       exercises.map(({ id, text }) => <option key={id} value={id}>{text}</option>)
-    console.log(this.state);
     
     return (
       <div className="container">
