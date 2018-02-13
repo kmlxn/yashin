@@ -18,19 +18,21 @@ async function makeRunRequest ({ code, input, languageId }) {
     },
   }
   
+  let response
   try {
-    const response = await axios.post("http://rextester.com/rundotnet/api", data, config);
-    return {
-      data: {
-        warnings: response.data.Warnings,
-        errors: response.data.Errors,
-        result: response.data.Result.trim(),
-        stats: response.data.Stats
-      }
-    };
+    response = await axios.post("http://rextester.com/rundotnet/api", data, config);
   } catch (error) {
     return { error };
   }
+
+  return {
+    data: {
+      warnings: (response.data.Warnings || ""),
+      errors: (response.data.Errors || ""),
+      result: (response.data.Result || "").trim(),
+      stats: (response.data.Stats || "")
+    }
+  };
 }
 
 
@@ -71,7 +73,9 @@ class App extends Component {
       }));
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
-    const results = responses.map((res, index) => ({
+    const results = responses.map((res, index) => (
+      console.log(res),
+      {
       ...tests[index],
       ...res.data,
       requestError: res.error,
@@ -143,7 +147,8 @@ class App extends Component {
       languages.map(({ id, name}) => <option key={id} value={id}>{name}</option>)
     const exerciseOptions =
       exercises.map(({ id, text }) => <option key={id} value={id}>{text}</option>)
-
+    console.log(this.state);
+    
     return (
       <div className="container">
         <div className="row">
