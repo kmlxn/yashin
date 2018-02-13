@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { exercises, languages } from './db'
+import { exercises, languages, editorLanguages } from './db'
 
 async function makeRunRequest ({ code, input, languageId }) {
   const data = new FormData();
@@ -41,7 +41,24 @@ class App extends Component {
     result: '',
     warnings: '',
     errors: '',
-    stats: ''
+    stats: '',
+    runButtonsDisabled: false,
+    isTesting: false,
+    isRunningOnce: false
+  }
+
+  componentDidMount () {
+    window.CodeMirror.modeURL = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/mode/%N/%N.min.js";
+    this.myCodeMirror = window.CodeMirror.fromTextArea(
+      document.getElementById('dastur'),
+      {
+        lineNumbers: true,
+        theme: 'solarized light'
+      }
+    )
+
+
+    this.amendEditor({ languageId: this.state.languageId });
   }
 
   async test () { 
@@ -49,7 +66,9 @@ class App extends Component {
       result: '',
       warnings: '',
       errors: '',
-      stats: ''
+      stats: '',
+      runButtonsDisabled: true,
+      isTesting: true,
     })
     const tests = exercises
       .find(({ id }) => id === this.state.exerciseId)
@@ -72,12 +91,19 @@ class App extends Component {
 
     const testsPassed = results.every(({ passed }) => passed);
 
-    this.setState({ testsPassed, testResults: results })
+    this.setState({
+      testsPassed,
+      testResults: results,
+      runButtonsDisabled: false,
+      isTesting: false
+    })
   }
 
   async run () {
     this.setState({
-      testResults: undefined
+      testResults: undefined,
+      runButtonsDisabled: true,
+      isRunningOnce: true
     })
     
     const response = await makeRunRequest({
@@ -86,7 +112,9 @@ class App extends Component {
       languageId: this.state.languageId
     })
     this.setState({
-      ...response.data
+      ...response.data,
+      runButtonsDisabled: false,
+      isRunningOnce: false
     })
   }
 
@@ -106,17 +134,36 @@ class App extends Component {
 
   onChangeLanguage (event) {
     const languageId = +event.target.value;
+    const code = exercises
+      .find(({ id }) => id === this.state.exerciseId)
+      .example[languageId]
+      || "";
+    const input = exercises
+      .find(({ id }) => id === this.state.exerciseId)
+      .tests[0].input;
 
     this.setState({
       languageId,
-      code: exercises
-        .find(({ id }) => id === this.state.exerciseId)
-        .example[languageId]
-        || "",
-      input: exercises
-        .find(({ id }) => id === this.state.exerciseId)
-        .tests[0].input
+      code,
+      input
     })
+
+    this.amendEditor({ languageId, code })
+  }
+
+  amendEditor ({ languageId, code }) {
+    const langSupport = editorLanguages
+      .find(l => l.languageId === languageId);
+
+    if (code !== undefined) {
+      this.myCodeMirror.setValue(code);
+    }
+
+    const { mode: modeName } = window.CodeMirror.findModeByMIME(langSupport.mode.mime);
+    
+    // will mode switch work for python 3 and 2?
+    this.myCodeMirror.setOption('mode', langSupport.mode.mime);
+    window.CodeMirror.autoLoadMode(this.myCodeMirror, modeName);
   }
 
   render() {
@@ -163,6 +210,7 @@ class App extends Component {
           <div className="col-lg-12">
             <p>Dastur</p>
             <textarea
+              id="dastur"
               className="form-control code"
               rows="8"
               value={this.state.code}
@@ -182,22 +230,33 @@ class App extends Component {
           </div>
           <div className="col-xs-3" style={{ textAlign: 'right', marginTop: '30px' }}>          
             <button
+              disabled={this.state.runButtonsDisabled}
               className="btn btn-primary"
-              onClick={event => this.run()}>Bajarish</button>
+              onClick={event => this.run()}
+            >
+              {this.state.isRunningOnce && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}
+              Bajarish
+            </button>
           </div>
           <div className="col-xs-3" style={{ marginTop: '30px' }}>              
             <button
+              disabled={this.state.runButtonsDisabled}
               className="btn btn-primary"
-              onClick={event => this.test()}>Tekshirish</button>
+              onClick={event => this.test()}
+            >
+              {this.state.isTesting && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}              
+              Tekshirish
+            </button>
           </div>
         </div>
+        <hr />
         <div className="row">
             {
               this.state.testResults &&
               <div className="col-sm-12">
-                <div class={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
+                <div className={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
                   <h4>Tekshiruv natijarali: {this.state.testsPassed ? 'yaxshi' : 'yomon'}</h4>
-                  <p>
+                  <div>
                     {
                       this.state.testResults
                         .map((tr, index) => <div key={index}>
@@ -215,43 +274,43 @@ class App extends Component {
                           <hr />
                         </div>)
                     }
-                  </p>
+                  </div>
                 </div>  
               </div>
             }
             {
               this.state.result &&
                 <div className="col-sm-6">              
-                  <div class="alert">
+                  <div className="alert alert-info">
                     <h4>Natija</h4>
-                    <p><pre>{this.state.result}</pre></p>
+                    <div className="run-output"><pre>{this.state.result}</pre></div>
                   </div>
                 </div>
             }
             {
               this.state.errors &&
                 <div className="col-sm-6">              
-                  <div class="alert alert-danger">
+                  <div className="alert alert-danger">
                     <h4>Xatolik</h4>
-                    <p><pre>{this.state.errors}</pre></p>
+                    <pre>{this.state.errors}</pre>
                   </div>
                 </div>
             }
             {
               this.state.warnings &&
                 <div className="col-sm-6">              
-                  <div class="alert alert-warning">
+                  <div className="alert alert-warning">
                     <h4>Ogohlantirishlar</h4>
-                    <p><pre>{this.state.warnings}</pre></p>
+                    <pre>{this.state.warnings}</pre>
                   </div>
                 </div>
             }
             {
               this.state.stats &&
               <div className="col-sm-6">              
-                <div class="alert alert-info">
+                <div className="alert alert-info">
                   <h4>Hisobot</h4>
-                  <p><pre>{this.state.stats}</pre></p>
+                  <p>{this.state.stats}</p>
                 </div>
               </div>
             }

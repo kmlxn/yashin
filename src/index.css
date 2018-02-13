@@ -2,10 +2,24 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 16px;
 }
 
 .code {
-  font-family: Consolas;
+  font-family: Consolas, 'Courier New', monospace;
+}
+
+.form-control {
+  font-size: 16px;
+}
+
+.run-output pre {
+  display: inline-block;
+}
+
+.CodeMirror {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 18px;
 }
 
 .row {
@@ -14,4 +28,36 @@ body {
 
 pre {
   border: unset;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 16px;
+}
+
+.glyphicon.fast-right-spinner {
+  -webkit-animation: glyphicon-spin-r 1s infinite linear;
+  animation: glyphicon-spin-r 1s infinite linear;
+  margin-right: 5px;
+}
+
+@-webkit-keyframes glyphicon-spin-r {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+  }
+}
+
+@keyframes glyphicon-spin-r {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+  }
 }
