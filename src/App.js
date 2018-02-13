@@ -154,7 +154,7 @@ class App extends Component {
         <div className="row">
           <div className="col-lg-12">
             <div className="page-header">
-              <h1>Uskuna</h1>
+              <h1>Yashin</h1>
               <p className="lead">Assalomu alaykum. Bu dasturlashni o'rganish uchun sayt.</p>
             </div>
           </div>
