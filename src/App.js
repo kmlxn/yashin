@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { exercises, languages, editorLanguages } from './db'
+import { exercises, languages } from './db'
+import CodeMirrorComponent from './CodeMirrorComponent'
+
 
 async function makeRunRequest ({ code, input, languageId }) {
   const data = new FormData();
@@ -47,19 +49,6 @@ class App extends Component {
     isRunningOnce: false
   }
 
-  componentDidMount () {
-    window.CodeMirror.modeURL = "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/mode/%N/%N.min.js";
-    this.myCodeMirror = window.CodeMirror.fromTextArea(
-      document.getElementById('dastur'),
-      {
-        lineNumbers: true,
-        theme: 'solarized light'
-      }
-    )
-
-
-    this.amendEditor({ languageId: this.state.languageId });
-  }
 
   async test () { 
     this.setState({
@@ -147,23 +136,6 @@ class App extends Component {
       code,
       input
     })
-
-    this.amendEditor({ languageId, code })
-  }
-
-  amendEditor ({ languageId, code }) {
-    const langSupport = editorLanguages
-      .find(l => l.languageId === languageId);
-
-    if (code !== undefined) {
-      this.myCodeMirror.setValue(code);
-    }
-
-    const { mode: modeName } = window.CodeMirror.findModeByMIME(langSupport.mode.mime);
-    
-    // will mode switch work for python 3 and 2?
-    this.myCodeMirror.setOption('mode', langSupport.mode.mime);
-    window.CodeMirror.autoLoadMode(this.myCodeMirror, modeName);
   }
 
   render() {
@@ -209,13 +181,11 @@ class App extends Component {
         <div className="row">
           <div className="col-lg-12">
             <p>Dastur</p>
-            <textarea
-              id="dastur"
-              className="form-control code"
-              rows="8"
-              value={this.state.code}
-              onChange={event => this.setState({ code: event.target.value })}
-            ></textarea>
+            <CodeMirrorComponent
+              code={this.state.code}
+              languageId={this.state.languageId}
+              onCodeChange={code => this.setState({ code })}
+            />
           </div>
         </div>
         <div className="row">
