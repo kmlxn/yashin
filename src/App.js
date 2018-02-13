@@ -226,70 +226,68 @@ class App extends Component {
         </div>
         <hr />
         <div className="row">
-            {
-              this.state.testResults &&
-              <div className="col-sm-12">
-                <div className={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
-                  <h4>Tekshiruv natijarali: {this.state.testsPassed ? 'yaxshi' : 'yomon'}</h4>
-                  <div>
-                    {
-                      this.state.testResults
-                        .map((tr, index) => <div key={index}>
-                          {
-                            tr.passed
-                            ? <p>O'tdi: Ha</p>
-                            : <p><strong>O'tdi: Yo'q</strong></p>
-                          }
-                          <p>Kiritilgan ma'lumotlar: {tr.input}</p>
-                          <p>Kutilgan ma'lumotlar: {tr.output}</p>
-                          <p>Dastur qaytargan ma'lumotlar: {tr.result}</p>
-                          <p>Hisobot: {tr.stats}</p>
-                          {tr.errors && <p>Xatoliklar: {tr.errors}</p>}
-                          {tr.warnings && <p>Ogohlantirishlar: {tr.warnings}</p>}
-                          <hr />
-                        </div>)
-                    }
-                  </div>
-                </div>  
-              </div>
-            }
-            {
-              this.state.result &&
-                <div className="col-sm-6">              
-                  <div className="alert alert-info">
-                    <h4>Natija</h4>
-                    <div className="run-output"><pre>{this.state.result}</pre></div>
-                  </div>
-                </div>
-            }
-            {
-              this.state.errors &&
-                <div className="col-sm-6">              
-                  <div className="alert alert-danger">
-                    <h4>Xatolik</h4>
-                    <pre>{this.state.errors}</pre>
-                  </div>
-                </div>
-            }
-            {
-              this.state.warnings &&
-                <div className="col-sm-6">              
-                  <div className="alert alert-warning">
-                    <h4>Ogohlantirishlar</h4>
-                    <pre>{this.state.warnings}</pre>
-                  </div>
-                </div>
-            }
-            {
-              this.state.stats &&
+          {
+            this.state.testResults &&
+            <div className="col-sm-12">
+              <div className={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
+                <h4>Tekshiruv natijarali: {this.state.testsPassed ? 'yaxshi' : 'yomon'}</h4>
+                {
+                  this.state.testResults
+                    .map((tr, index) => <div key={index}>
+                      {
+                        tr.passed
+                        ? <p>O'tdi: Ha</p>
+                        : <p><strong>O'tdi: Yo'q</strong></p>
+                      }
+                      <div>Kiritilgan ma'lumotlar: <pre>{tr.input}</pre></div>
+                      <div>Kutilgan ma'lumotlar: <pre>{tr.output}</pre></div>
+                      {tr.result && <div>Dastur qaytargan ma'lumotlar: <pre>{tr.result}</pre></div>}
+                      {tr.errors && <div>Xatoliklar: <pre>{tr.errors}</pre></div>}
+                      {tr.warnings && <div>Ogohlantirishlar: <pre>{tr.warnings}</pre></div>}
+                      <p>Hisobot: {tr.stats}</p>
+                      <hr />
+                    </div>)
+                }
+              </div>  
+            </div>
+          }
+          {
+            this.state.result &&
               <div className="col-sm-6">              
                 <div className="alert alert-info">
-                  <h4>Hisobot</h4>
-                  <p>{this.state.stats}</p>
+                  <h4>Natija</h4>
+                  <div><pre>{this.state.result}</pre></div>
                 </div>
               </div>
-            }
-          </div>
+          }
+          {
+            this.state.errors &&
+              <div className="col-sm-6">              
+                <div className="alert alert-danger">
+                  <h4>Xatolik</h4>
+                  <pre>{this.state.errors}</pre>
+                </div>
+              </div>
+          }
+          {
+            this.state.warnings &&
+              <div className="col-sm-6">              
+                <div className="alert alert-warning">
+                  <h4>Ogohlantirishlar</h4>
+                  <pre>{this.state.warnings}</pre>
+                </div>
+              </div>
+          }
+          {
+            this.state.stats &&
+            <div className="col-sm-6">              
+              <div className="alert alert-info">
+                <h4>Hisobot</h4>
+                <p>{this.state.stats}</p>
+              </div>
+            </div>
+          }
+        </div>
       </div>
     );
   }

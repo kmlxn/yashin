@@ -13,10 +13,6 @@ body {
   font-size: 16px;
 }
 
-.run-output pre {
-  display: inline-block;
-}
-
 .CodeMirror {
   font-family: Consolas, 'Courier New', monospace;
   font-size: 18px;
