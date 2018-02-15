@@ -151,7 +151,13 @@ class App extends Component {
         <div className="row">
           <div className="col-lg-12">
             <div className="page-header">
-              <h1>Yashin</h1>
+            
+            <h1>
+              <svg style={{ width: '36px', height: '36px', marginBottom: '-6px' }} viewBox="0 0 24 24">
+                <path fill="#f9ebc6" d="M7,2V13H10V22L17,10H13L17,2H7Z" />
+              </svg>
+              Yashin
+            </h1>
               <p className="lead">Assalomu alaykum. Bu dasturlashni o'rganish uchun sayt.</p>
             </div>
           </div>

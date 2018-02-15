@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: Consolas, 'Courier New', monospace;
   font-size: 16px;
+  color: #839496;
 }
 
 .code {
@@ -12,12 +13,18 @@ body {
 .form-control {
   font-size: 16px;
   background-color: #fdf6e3;
+  color: #839496;
   font-family: Consolas, 'Courier New', monospace;
+}
+
+h1 {
+  color: #f2e6c4;
 }
 
 .CodeMirror {
   font-family: Consolas, 'Courier New', monospace;
   font-size: 18px;
+  border-radius: 4px;
 }
 
 .row {
@@ -28,7 +35,32 @@ pre {
   border: unset;
   font-family: Consolas, 'Courier New', monospace;
   font-size: 16px;
+  background-color: #eee8d5;
+}
+
+.btn-primary {
+  color: #839496;
   background-color: #fdf6e3;
+  border-color: #eee8d5;
+  text-transform: lowercase;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus,
+.btn-primary[disabled]:hover, .btn-primary[disabled]:active, .btn-primary[disabled]:focus {
+  background-color: #f7f0df;
+  border-color: #eee8d5;
+  color: #839496;
+}
+
+.alert {
+  border-width: 3px 3px 3px 3px;
+  background-color: #fdf6e3;
+  border-color: #eee8d5;
+  color: #839496;
+}
+
+.alert-success hr {
+  border-top-color: #eee8d5;
 }
 
 .glyphicon.fast-right-spinner {
