@@ -10,11 +10,25 @@ body {
   font-family: Consolas, 'Courier New', monospace;
 }
 
-.form-control {
+.form-control, .CodeMirror {
   font-size: 16px;
   background-color: #fdf6e3;
   color: #839496;
   font-family: Consolas, 'Courier New', monospace;
+  box-shadow: unset !important;
+  -webkit-box-shadow: unset !important;
+  -moz-box-shadow: unset !important;
+  border-color: #eae4d2;
+  border-style: solid;
+  border-width: 3px 3px 3px 3px;
+  border-radius: 2px;
+}
+
+.form-control:focus, .CodeMirror-focused {
+  border-width: 2px 2px 2px 2px;
+  border-color: #eae4d2;
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
 }
 
 h1 {
@@ -24,7 +38,6 @@ h1 {
 .CodeMirror {
   font-family: Consolas, 'Courier New', monospace;
   font-size: 18px;
-  border-radius: 4px;
 }
 
 .row {
@@ -36,6 +49,7 @@ pre {
   font-family: Consolas, 'Courier New', monospace;
   font-size: 16px;
   background-color: #eee8d5;
+  border-radius: 2px;  
 }
 
 .btn-primary {
@@ -43,13 +57,16 @@ pre {
   background-color: #fdf6e3;
   border-color: #eee8d5;
   text-transform: lowercase;
+  border-radius: 2px;  
 }
 
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus,
-.btn-primary[disabled]:hover, .btn-primary[disabled]:active, .btn-primary[disabled]:focus {
+.btn-primary:focus:active, .btn-primary[disabled]:hover,
+.btn-primary[disabled]:active, .btn-primary[disabled]:focus {
   background-color: #f7f0df;
   border-color: #eee8d5;
   color: #839496;
+  border-width: 2px 2px 2px 2px;  
 }
 
 .alert {
@@ -57,6 +74,36 @@ pre {
   background-color: #fdf6e3;
   border-color: #eee8d5;
   color: #839496;
+  border-radius: 2px;
+}
+
+.scrollable-select {
+  height: 150px;
+  overflow: auto;
+  font-size: 16px;
+  background-color: #fdf6e3;
+  color: #839496;
+  font-family: Consolas, 'Courier New', monospace;
+  border-color: #eae4d2;
+  border-style: solid;
+  border-width: 3px 3px 3px 3px;
+  border-radius: 2px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.scrollable-select .active {
+  background-color: antiquewhite;
+}
+
+.scrollable-select > * {
+  padding: 5px;
+  cursor: pointer;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.btn {
+  border-width: 3px 3px 3px 3px;  
 }
 
 .alert-success hr {

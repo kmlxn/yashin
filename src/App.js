@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { exercises, languages } from './db'
 import CodeMirrorComponent from './CodeMirrorComponent'
-
+import ScrollableSelect from './ScrollableSelect'
 
 async function makeRunRequest ({ code, input, languageId }) {
   const data = new FormData();
@@ -109,8 +109,8 @@ class App extends Component {
     })
   }
 
-  onChangeExercise (event) {
-    const exerciseId = +event.target.value;
+  onChangeExercise (exerciseIdStr) {
+    const exerciseId = +exerciseIdStr;
     this.setState({
       exerciseId: exerciseId,
       code: exercises
@@ -153,9 +153,7 @@ class App extends Component {
             <div className="page-header">
             
             <h1>
-              <svg style={{ width: '36px', height: '36px', marginBottom: '-6px' }} viewBox="0 0 24 24">
-                <path fill="#f9ebc6" d="M7,2V13H10V22L17,10H13L17,2H7Z" />
-              </svg>
+              <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
               Yashin
             </h1>
               <p className="lead">Assalomu alaykum. Bu dasturlashni o'rganish uchun sayt.</p>
@@ -176,14 +174,19 @@ class App extends Component {
           </div>
           <div className="col-sm-6">
             <p>Masala</p>
-            <select
+            <ScrollableSelect
+              value={this.state.exerciseId}
+              onChange={value => this.onChangeExercise(value)}
+              elems={exercises.map(({ id, text }) => ({ value: id, children: text }))}
+            />
+            {/* <select
               className="form-control"
               value={this.state.exerciseId}
               onChange={(event) => this.onChangeExercise(event)}
               style={{ display: 'block' }}
             >
               {exerciseOptions}
-            </select>
+            </select> */}
           </div>
         </div>
         <div className="row">
@@ -201,7 +204,7 @@ class App extends Component {
             <p>Kirish</p>
             <textarea
               className="form-control code"
-              rows="1"
+              rows="2"
               value={this.state.input}
               onChange={event => this.setState({ input: event.target.value })}
             ></textarea>
