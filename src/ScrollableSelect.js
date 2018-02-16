@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 
 export default class extends Component {
   state = {}
-  onChange
 
-  _onChange (value) {
-    console.log(value);
+  onChange (value) {
     this.props.onChange && this.props.onChange(value);
   }
 
@@ -15,7 +13,7 @@ export default class extends Component {
       {(this.props.elems || []).map(({ value, children }) =>
         <li className={value === this.props.value ? 'active' : ''}
           key={value}
-          onClick={() => this._onChange(value)}
+          onClick={() => this.onChange(value)}
         >
           {children}
         </li>

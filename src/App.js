@@ -143,8 +143,6 @@ class App extends Component {
   render() {
     const languageOptions =
       languages.map(({ id, name}) => <option key={id} value={id}>{name}</option>)
-    const exerciseOptions =
-      exercises.map(({ id, text }) => <option key={id} value={id}>{text}</option>)
     
     return (
       <div className="container">

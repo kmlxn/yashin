@@ -25,7 +25,7 @@ body {
 }
 
 .form-control:focus, .CodeMirror-focused {
-  border-width: 2px 2px 2px 2px;
+  border-width: 3px 3px 3px 3px;
   border-color: #eae4d2;
   box-shadow: unset;
   -webkit-box-shadow: unset;
@@ -66,7 +66,7 @@ pre {
   background-color: #f7f0df;
   border-color: #eee8d5;
   color: #839496;
-  border-width: 2px 2px 2px 2px;  
+  border-width: 3px 3px 3px 3px;  
 }
 
 .alert {
