@@ -3,6 +3,8 @@ import axios from 'axios';
 import { exercises, languages } from './db'
 import CodeMirrorComponent from './CodeMirrorComponent'
 import ScrollableSelect from './ScrollableSelect'
+import { isExercisePassed, saveExerciseResults } from './exerciseResults'
+
 
 async function makeRunRequest ({ code, input, languageId }) {
   const data = new FormData();
@@ -51,7 +53,6 @@ class App extends Component {
     isRunningOnce: false
   }
 
-
   async test () { 
     this.setState({
       result: '',
@@ -81,6 +82,14 @@ class App extends Component {
     }));
 
     const testsPassed = results.every(({ passed }) => passed);
+
+    if (testsPassed) {
+      saveExerciseResults({
+        id: this.state.exerciseId,
+        passed: testsPassed,
+        languageId: this.state.languageId
+      })
+    }
 
     this.setState({
       testsPassed,
@@ -175,16 +184,14 @@ class App extends Component {
             <ScrollableSelect
               value={this.state.exerciseId}
               onChange={value => this.onChangeExercise(value)}
-              elems={exercises.map(({ id, text }) => ({ value: id, children: text }))}
+              elems={exercises.map(({ id, text }) =>
+                ({
+                  value: id,
+                  children: text,
+                  highlighted: isExercisePassed({ id, languageId: this.state.languageId })
+                }))
+              }
             />
-            {/* <select
-              className="form-control"
-              value={this.state.exerciseId}
-              onChange={(event) => this.onChangeExercise(event)}
-              style={{ display: 'block' }}
-            >
-              {exerciseOptions}
-            </select> */}
           </div>
         </div>
         <div className="row">

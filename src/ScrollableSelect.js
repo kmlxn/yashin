@@ -8,16 +8,22 @@ export default class extends Component {
     this.props.onChange && this.props.onChange(value);
   }
 
+  makeElemClassName ({ value, highlighted }) {
+    const activeClass = value === this.props.value ? 'active' : '';
+    const highlightedClass = highlighted ? 'highlighted' : '';
+    return activeClass + ' ' + highlightedClass;
+  }
+
   render () {
     return <ul className="scrollable-select">
-      {(this.props.elems || []).map(({ value, children }) =>
-        <li className={value === this.props.value ? 'active' : ''}
-          key={value}
-          onClick={() => this.onChange(value)}
-        >
-          {children}
-        </li>
-      )}
-  </ul>
-}
+        {(this.props.elems || []).map(({ value, children, highlighted }) =>
+          <li className={this.makeElemClassName({ value, highlighted })}
+            key={value}
+            onClick={() => this.onChange(value)}
+          >
+            {children}
+          </li>
+        )}
+    </ul>
+  }
 }

@@ -76,7 +76,7 @@ for satr in satrlar:
 eng_katta_son = sonlar[0]
 for son in sonlar:
     if eng_katta_son < son:
-    eng_katta_son = son
+        eng_katta_son = son
 
 print(eng_katta_son)`,
             23: `var stdin = process.openStdin();
