@@ -9,16 +9,16 @@ export const exercises = [
         ],
         example: {
             24: `kiritilgan_malumot = input()
-qatorlar = kiritilgan_malumot.split()
-son_1 = int(qatorlar[0])
-son_2 = int(qatorlar[1])
+satrlar = kiritilgan_malumot.split()
+son_1 = int(satrlar[0])
+son_2 = int(satrlar[1])
 
 print(son_1 + son_2)`,
             8: `<?php
 $kiritilgan_malumot = fgets(STDIN);
-$qatorlar = explode(" ", $kiritilgan_malumot);
-$son_1 = intval($qatorlar[0]);
-$son_2 = intval($qatorlar[1]);
+$satrlar = explode(" ", $kiritilgan_malumot);
+$son_1 = intval($satrlar[0]);
+$son_2 = intval($satrlar[1]);
 
 echo $son_1 + $son_2;`,
             4: `import java.util.*;
@@ -31,12 +31,20 @@ class Rextester
         Scanner inputReader = new Scanner(System.in);
         String kiritilgan_malumot = inputReader.nextLine();
         
-        String[] qatorlar = kiritilgan_malumot.split(" ");
-        int son_1 = Integer.parseInt(qatorlar[0]);
-        int son_2 = Integer.parseInt(qatorlar[1]);
+        String[] satrlar = kiritilgan_malumot.split(" ");
+        int son_1 = Integer.parseInt(satrlar[0]);
+        int son_2 = Integer.parseInt(satrlar[1]);
         System.out.println(son_1 + son_2);
     }
-}`
+}`,
+            23: `var stdin = process.openStdin();
+
+stdin.addListener("data", function(kiritilgan_malumot) { 
+    var satrlar = kiritilgan_malumot.toString().split(" ");
+    var son_1 = parseInt(satrlar[0]);
+    var son_2 = parseInt(satrlar[1]);
+    console.log(son_1 + son_2);
+});`
         },
     },
     {
@@ -57,7 +65,59 @@ class Rextester
             { "input": "432 12 43 324 23 -32 0 0 -5453 55", "output": "432" },
             { "input": "0 0 0 0 -1 -44 0 0 0 0", "output": "0" }
         ],
-        example: {}
+        example: {
+            24: `kiritilgan_malumot = input()
+satrlar = kiritilgan_malumot.split()
+sonlar = []
+
+for satr in satrlar:
+    sonlar.append(int(satr))
+
+eng_katta_son = sonlar[0]
+for son in sonlar:
+    if eng_katta_son < son:
+    eng_katta_son = son
+
+print(eng_katta_son)`,
+            23: `var stdin = process.openStdin();
+
+stdin.addListener("data", function(kiritilganMalumot) { 
+    var satrlar = kiritilganMalumot.toString().split(" ");
+    var sonlar = [];
+    for (var joy = 0; joy < satrlar.length; ++joy) {
+        var son = parseInt(satrlar[joy]);
+        sonlar.push(son);
+    }
+    
+    var engKattaSon = sonlar[0];
+    for (var joy = 0; joy < sonlar.length; ++joy) {
+        var son = sonlar[joy];
+        if (son > engKattaSon) {
+            engKattaSon = son;
+        }
+    }
+    
+    console.log(engKattaSon);
+});`,
+            8: `<?php
+$kiritilganMalumot = fgets(STDIN);
+$satrlar = explode(" ", $kiritilganMalumot);
+
+$sonlar = array();
+foreach ($satrlar as $satr) {
+    $son = intval($satr);
+    $sonlar[] = $son;
+}
+
+$engKattaSon = $sonlar[0];
+foreach ($sonlar as $son) {
+    if ($son > $engKattaSon) {
+        $engKattaSon = $son;
+    }
+}
+
+echo $engKattaSon;`
+        }
     },
     {
         id: 4,
