@@ -121,7 +121,7 @@ echo $engKattaSon;`
     },
     {
         id: 4,
-        text: `Berilgan 10 sonlarni ichida eng kop qaytaradiganni toping.
+        text: `Berilgan 10 sonlarni ichida eng kop qaytaraladiganini toping.
             Shunaqa sonla bir-nechta bo'lsa, birinchi uchraganini tanlang.`,
         tests: [
             { "input": "4 4 54 22 -43 122 4343 0 1 44", "output": "4" },
@@ -133,7 +133,7 @@ echo $engKattaSon;`
     {
         id: 5,
         text: `Pitsani narxini aniqlang. Pitsa Amerikano - 30 000 so'm.
-            Pitsa Italiano - 32 000 so'm. Pitsani 6km dan kamroq masofadan
+            Pitsa Italiano - 32 000 so'm. Pitsani 6 km dan kamroq masofadan
             buyruq qilishsa, olib kelishi - 5 000 so'm. Bo'lmasa - har bir
             kilometrga 1 000 so'm.`,
         tests: [
@@ -145,10 +145,10 @@ echo $engKattaSon;`
     },
     {
         id: 6,
-        text: `Dorixonada bir nechta dorila bor. Ularni ichida yaroqlik muddati
-            otkan dorilar ham bor. Sizga dorilarni royxati beriladi. Yaroq emas dorilarni
-            chop etishiz kerak. Birinchi qatorda berilgan sana bugungi sana deb oylang.
-            Keyingi qatorlada dorini nomi va yaroqlik otishi sanasi berilgan.`,
+        text: `Dorixonada bir nechta dorilar bor. Ularni ichida yaroqlik muddati
+            o'tkan dorilar ham bor. Sizga dorilarni royxati beriladi. Yaroq emas dorilarni
+            chop etishiz kerak. Birinchi qatorda berilgan sana bugungi sana deb o'ylang.
+            Keyingi qatorlarda dorini nomi va yaroqlik muddati otishi sanasi berilgan.`,
         tests: [
             {
                 "input": "10.10.2019\n" + 
@@ -178,8 +178,9 @@ echo $engKattaSon;`
     },
     {
         id: 7,
-        text: `Sizda dokon bor. Dokonda har bitta sotilgan narsani siz komputerga yozin olasiz.
-            Bugun qancha pul topganizni hisoblaydigan dasturni tuzing.`,
+        text: `Sizda do'kon bor. Do'konda har bitta sotilgan narsani siz
+            komputerga kiritasiz. Bugun qancha pul topganizni hisoblaydigan
+            dasturni tuzing.`,
         tests: [
             { 
                 "input":
