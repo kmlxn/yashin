@@ -156,7 +156,7 @@ class App extends Component {
               <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
               Yashin
             </h1>
-              <p className="lead">Assalomu alaykum. Bu dasturlashni o'rganish uchun sayt.</p>
+              <p className="lead">Assalomu alaykum. Yashin – dasturlashni o'rganish uchun sayt.</p>
             </div>
           </div>
         </div>
