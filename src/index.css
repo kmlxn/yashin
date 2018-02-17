@@ -108,6 +108,10 @@ pre {
   margin-right: 5px;
 }
 
+.form-control[readonly] {
+  background-color: #fdf6e3;
+}
+
 .btn {
   border-width: 3px 3px 3px 3px;  
 }

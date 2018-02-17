@@ -44,6 +44,7 @@ class App extends Component {
     exerciseId: exercises[0].id,
     code: exercises[0].example[languages[0].id],
     input: exercises[0].tests[0].input,
+    expectedOutput: exercises[0].tests[0].output,
     result: '',
     warnings: '',
     errors: '',
@@ -120,32 +121,24 @@ class App extends Component {
 
   onChangeExercise (exerciseIdStr) {
     const exerciseId = +exerciseIdStr;
+    const exercise = exercises.find(({ id }) => id === exerciseId);
+
     this.setState({
       exerciseId: exerciseId,
-      code: exercises
-        .find(({ id }) => id === exerciseId)
-        .example[this.state.languageId]
+      code: exercise.example[this.state.languageId]
         || "",
-      input: exercises
-        .find(({ id }) => id === exerciseId)
-        .tests[0].input
+      input: exercise.tests[0].input,
+      expectedOutput: exercise.tests[0].output
     })
   }
 
   onChangeLanguage (event) {
     const languageId = +event.target.value;
-    const code = exercises
-      .find(({ id }) => id === this.state.exerciseId)
-      .example[languageId]
-      || "";
-    const input = exercises
-      .find(({ id }) => id === this.state.exerciseId)
-      .tests[0].input;
+    const exercise = exercises.find(({ id }) => id === this.state.exerciseId);
 
     this.setState({
       languageId,
-      code,
-      input
+      code: exercise.example[languageId] || "",
     })
   }
 
@@ -209,11 +202,22 @@ class App extends Component {
             <p>Kirish</p>
             <textarea
               className="form-control code"
-              rows="2"
+              rows="3"
               value={this.state.input}
               onChange={event => this.setState({ input: event.target.value })}
             ></textarea>
           </div>
+          <div className="col-sm-6">
+            <p>Kutilgan natija</p>
+            <textarea
+              readOnly
+              className="form-control code"
+              rows="3"
+              value={this.state.expectedOutput}
+            ></textarea>
+          </div>
+        </div>
+        <div className="row">
           <div className="col-xs-3" style={{ textAlign: 'right', marginTop: '30px' }}>          
             <button
               disabled={this.state.runButtonsDisabled}
