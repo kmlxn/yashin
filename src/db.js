@@ -122,11 +122,124 @@ echo $engKattaSon;`
     {
         id: 4,
         text: `Berilgan 10 sonlarni ichida eng kop qaytaradiganni toping.
-            Shunaqa sonla bir-nechta bo'lsa, birinchi uchraydiganni tanlang.`,
+            Shunaqa sonla bir-nechta bo'lsa, birinchi uchraganini tanlang.`,
         tests: [
             { "input": "4 4 54 22 -43 122 4343 0 1 44", "output": "4" },
             { "input": "432 12 -5453 324 0 -32 0 0 -5453 -5453", "output": "-5453" },
             { "input": "0 0 0 0 -1 -44 0 0 0 0", "output": "0" }
+        ],
+        example: {}
+    },
+    {
+        id: 5,
+        text: `Pitsani narxini aniqlang. Pitsa Amerikano - 30 000 so'm.
+            Pitsa Italiano - 32 000 so'm. Pitsani 6km dan kamroq masofadan
+            buyruq qilishsa, olib kelishi - 5 000 so'm. Bo'lmasa - har bir
+            kilometrga 1 000 so'm.`,
+        tests: [
+            { "input": "pitsa: Amerikano, masofa: 5km", "output": "35000" },
+            { "input": "pitsa: Italiano, masofa: 4km", "output": "37000" },
+            { "input": "pitsa: Italiano, masofa: 8km", "output": "40000" }
+        ],
+        example: {}
+    },
+    {
+        id: 6,
+        text: `Dorixonada bir nechta dorila bor. Ularni ichida yaroqlik muddati
+            otkan dorilar ham bor. Sizga dorilarni royxati beriladi. Yaroq emas dorilarni
+            chop etishiz kerak. Birinchi qatorda berilgan sana bugungi sana deb oylang.
+            Keyingi qatorlada dorini nomi va yaroqlik otishi sanasi berilgan.`,
+        tests: [
+            {
+                "input": "10.10.2019\n" + 
+                    "Makropen 12.12.2020\n" + 
+                    "Aspirin 30.01.2000\n" +
+                    "Pikovit 16.04.2018",
+                "output": "Aspirin Pikovit"
+            },
+            {
+                "input": "05.03.2020\n" +
+                    "Trimekor 13.05.2015\n" +
+                    "Polioksidoniy 21.11.2021\n" +
+                    "Progast 01.03.2020",
+                "output": "Trimekor"
+            },
+            {
+                "input": "15.06.2021\n" +
+                    "Tsiprolet 01.05.2021\n" +
+                    "Kadelak 01.05.2021\n" +
+                    "Egilok 05.04.2021\n" +
+                    "Metokard 05.07.2021\n" +
+                    "Karvedilol 11.01.2021",
+                "output": "Tsiprolet Kadelak Egilok Karvedilol"
+            }
+        ],
+        example: {}
+    },
+    {
+        id: 7,
+        text: `Sizda dokon bor. Dokonda har bitta sotilgan narsani siz komputerga yozin olasiz.
+            Bugun qancha pul topganizni hisoblaydigan dasturni tuzing.`,
+        tests: [
+            { 
+                "input":
+                    "Narxlar\n" +
+                    "Non: 750\n" +
+                    "Kir yuvish kukuni: 15000\n" +
+                    "Sovun: 3000\n" +
+                    "\n" +
+                    "Sotilgan\n" +
+                    "Non\n" +
+                    "Non\n" +
+                    "Non\n" +
+                    "Kir yuvish kukuni\n" +
+                    "Sovun\n" +
+                    "Non\n" +
+                    "Sovun\n",
+                "output": "24000"
+            },
+            { 
+                "input":
+                    "Narxlar\n" +
+                    "Saqich: 150\n" +
+                    "Teshkulcha: 3000\n" +
+                    "Gugurt: 150\n" +
+                    "\n" +
+                    "Sotilgan\n" +
+                    "Saqich\n" +
+                    "Saqich\n" +
+                    "Teshkulcha\n" +
+                    "Teshkulcha\n" +
+                    "Gugurt\n" +
+                    "Saqich\n" +
+                    "Gugurt\n" +
+                    "Gugurt\n",
+                "output": "6900"
+            },
+            { 
+                "input":
+                    "Narxlar\n" +
+                    "Quruq choy: 5000\n" +
+                    "Yopgan non: 1000\n" +
+                    "Sabzi 1kg: 2000\n" +
+                    "Guruch 1kg: 2200\n" +
+                    "Daftar: 800\n" +
+                    "\n" +
+                    "Sotilgan\n" +
+                    "Quruq choy\n" +
+                    "Yopgan non\n" +
+                    "Daftar\n" +
+                    "Quruq choy\n" +
+                    "Yopgan non\n" +
+                    "Daftar\n" +
+                    "Yopgan non\n" +
+                    "Quruq choy\n" +
+                    "Guruch 1kg\n" +
+                    "Quruq choy\n" +
+                    "Yopgan non\n" +
+                    "Daftar\n",
+                "output": "35800"
+            },
         ],
         example: {}
     }
