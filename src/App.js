@@ -22,7 +22,7 @@ async function makeRunRequest ({ code, input, languageId }) {
   
   let response
   try {
-    response = await axios.post("http://rextester.com/rundotnet/api", data, config);
+    response = await axios.post("https://rextester.com/rundotnet/api", data, config);
   } catch (error) {
     return { error };
   }
