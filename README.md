@@ -1,2 +1,2 @@
-Source code for my Yashin website.
-http://yashin.netlify.com
+O'zbekcha dasturlash
+https://yashin.dasturlash.com
