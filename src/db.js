@@ -1,6 +1,249 @@
 export const exercises = [
     {
-        id: 1,
+        id: 'c19040e3',
+        text: "Dasturga berilgan ma'lumotni chop eting.",
+        tests: [
+            { input: "Assalomu alaykum", output: "Assalomu alaykum" },
+            { input: "Hayrli tong", output: "Hayrli tong" },
+            { input: "Taqvim, uchar, ohangrabo, unsur, riyoziyot.", output: "Taqvim, uchar, ohangrabo, unsur, riyoziyot." },
+        ],
+        example: {}
+    },
+    {
+        id: '197d6cda',
+        text: "Foydalanuvchidan oylik maoshini so'rang. Yiliga topadigan pulini hisoblab bering.",
+        tests: [
+            { input: "100000", output: "1200000" },
+            { input: "800000", output: "9600000‬" },
+            { input: "3500000", output: "42000000‬" },
+        ],
+        example: {}
+    },
+    {
+        id: 'c85fdd3b',
+        text: "Foydalanuvchidan oylik maoshini so'rang. Yiliga topadigan pulini hisoblab bering. 25% soliqni inobatga oling.",
+        tests: [
+            { input: "100000", output: "900000" },
+            { input: "800000", output: "7200000‬" },
+            { input: "3500000", output: "31500000" },
+        ],
+        example: {}
+    },
+    {
+        id: 'e1ccbfec',
+        text: "Foydalanuvchidan oylik maoshini so'rang. Foydalanuvchi 90% oylik maoshini sarflaydi. Yiliga saqlab qoladigan pulini hisoblab bering.",
+        tests: [
+            { input: "100000", output: "120000" },
+            { input: "800000", output: "960000‬" },
+            { input: "3500000", output: "4200000‬" },
+        ],
+        example: {}
+    },
+    {
+        id: '5087296d',
+        text: "Foydalanuvchidan oylik maoshini so'rang. Foydalanuvchi 90% oylik maoshini sarflaydi. Yiliga saqlab qoladigan pulini hisoblab bering. 25% soliqni inobatga oling.",
+        tests: [
+            { input: "100000", output: "90000" },
+            { input: "800000", output: "720000‬" },
+            { input: "3500000", output: "3150000" },
+        ],
+        example: {}
+    },
+    {
+        id: '7aa89e28',
+        text: `Foydalanuvchidan yoshini so'rang. Yoshi 59 dan yuqori bo'lsa, unga <code>Qarisiz!</code> deb yozing.<br>
+            Yoshi 59 dan kichik, yoki teng bo'lsa <code>Yoshsiz!</code> deb chiqaring.`,
+        tests: [
+            { input: "50", output: "Yoshsiz!" },
+            { input: "60", output: "Qarisiz!" },
+            { input: "59", output: "Yoshsiz!" },
+        ],
+        example: {}
+    },
+    {
+        id: '6121e2ab',
+        text: `Foydalanuvchidan somsani narxini so'rang. 4000 yoki qimmatroq bo'lsa, unga <code>Qimmat!</code> deb yozing.<br>
+            4000 dan arzonroq bo'lsa <code>Arzon!</code> deb chiqaring.`,
+        tests: [
+            { input: "4000", output: "Qimmat!" },
+            { input: "60", output: "Arzon!" },
+            { input: "98500", output: "Qimmat!" },
+        ],
+        example: {}
+    },
+    {
+        id: '81d0efad',
+        text: `Foydalanuvchidan ismini so'rang. <code>Ali</code> bo'lsa, unga <code>Sizga kirish mumkin emas!</code> deb yozing.<br>
+            Boshqa ism bo'lsa, hech narsani yozmang.`,
+        tests: [
+            { input: "Ali", output: "Sizga kirish mumkin emas!" },
+            { input: "Toshmat", output: "" },
+            { input: "Pishloq", output: "" },
+        ],
+        example: {}
+    },
+    {
+        id: '2b41c8f9',
+        text: `Foydalanuvchidan sir so'zni so'rang. <code>achchiqpishloq</code> deb kiritsa, <code>Xush kelibsiz, ma'mur</code> deb yozing.
+            Boshqa narsani kiritsa, <code>Kirish xatoligi</code> deb yozing.`,
+        tests: [
+            { input: "achchiqpishloq", output: "Xush kelibsiz, ma'mur" },
+            { input: "bir ikki uch tort", output: "Kirish xatoligi" },
+            { input: "pishloq", output: "Kirish xatoligi" },
+        ],
+        example: {}
+    },
+    {
+        id: '5d684b07',
+        text: `Foydalanuvchidan yoshini so'rang. Yoshi 50 dan yuqori bo'lsa, unga <code>Qarisiz!</code> deb yozing.<br>
+            Yoshi 50 dan kichik bo'lsa <code>Yoshsiz!</code> deb chiqaring. Yoshi 50 bo'lsa <code>Yoshingiz o'rtacha</code> deb yozing.`,
+        tests: [
+            { input: "50", output: "Yoshingiz o'rtacha" },
+            { input: "60", output: "Qarisiz!" },
+            { input: "59", output: "Yoshsiz!" },
+        ],
+        example: {}
+    },
+    {
+        id: '79c192a1',
+        text: `Foydalanuvchidan somsani narxini so'rang. 4000 dan qimmatroq bo'lsa, unga <code>Qimmat!</code> deb yozing.<br>
+            4000 dan arzonroq bo'lsa <code>Arzon!</code> deb chiqaring. 4000 ming bo'lsa <code>Bo'laveradi</code> deb yozing.`,
+        tests: [
+            { input: "4000", output: "Bo'laveradi" },
+            { input: "60", output: "Arzon!" },
+            { input: "98500", output: "Qimmat!" },
+        ],
+        example: {}
+    },
+    {
+        id: '611ba6f8',
+        text: `Foydalanuvchidan sir so'zni so'rang. <code>achchiqqpishloq</code> deb kiritsa, <code>Xush kelibsiz, ma'mur</code> deb yozing.
+            <code>zanjabil</code> dev kiritsa, <code>Assalomu alaykum muharrir</code> unga deb yozish kerak. 
+            Boshqa narsani kiritsa, hech narsani yozish kerak emas.`,
+        tests: [
+            { input: "achchiqqpishloq", output: "Xush kelibsiz, ma'mur" },
+            { input: "zanjabil", output: "Assalomu alaykum muharrir" },
+            { input: "pishloq", output: "" },
+        ],
+        example: {}
+    },
+    {
+        id: '2f2b32e1',
+        text: `Foydalanuvchidan ismini so'rang. <code>Ali</code> bo'lsa, unga <code>Sizga kirish mumkin emas!</code> deb yozing.<br>
+            <code>Bobur</code> bo'lsa, <code>Siz faqat o'qiy olasiz!</code> deb yozing. Boshqa ism bo'lsa, hech narsani yozmang.`,
+        tests: [
+            { input: "Ali", output: "Sizga kirish mumkin emas!" },
+            { input: "Bobur", output: "Siz faqat o'qiy olasiz!" },
+            { input: "Pishloq", output: "" },
+        ],
+        example: {}
+    },
+    {
+        id: 'e57c6ff0',
+        text: `Foydalanuvchidan oylik maoshini so'rang va soliqni inobatga olishni yoki olmaslikni so'rang. Yiliga topadigan pulini hisoblab bering.
+        <code>
+800000
+ha
+        </code> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
+        <code>
+1000000
+yo'q
+        </code> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
+        tests: [
+            { input: "100000\nha", output: "900000" },
+            { input: "800000\nyo'q", output: "9600000" },
+            { input: "3500000\nha", output: "31500000" },
+        ],
+        example: {}
+    },
+    {
+        id: 'db80efbc',
+        text: `Foydalanuvchidan oylik maoshini so'rang va soliqni inobatga olishni yoki olmaslikni so'rang. Foydalanuvchi 90% oylik maoshini sarflaydi. Yiliga saqlaydigan pulini hisoblab bering.
+        <code>
+800000
+ha
+        </code> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
+        <code>
+1000000
+yo'q
+        </code> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
+        tests: [
+            { input: "100000\nha", output: "90000" },
+            { input: "800000\nyo'q", output: "960000" },
+            { input: "3500000\nha", output: "3150000" },
+        ],
+        example: {}
+    },
+    {
+        id: 'ed792c04',
+        text: `Foydalanuvchidan pulni so'rang va valyutani so'rang. Va kiritgan miqdorini boshqa valyutaga aylantirib bering.
+        <code>
+5
+dollar
+        </code> deb kiritsa, demak 5 dollarni so'mga aylantirish kerak. Demak <code>42500</code> deb chiqarib bershingiz kerak (1 dollar 8500 so'm deymiz).
+        <code>
+8500
+so'm
+        </code> deb kiritsa, demak 8500 so'mni dollarga aylantirish kerak. Demak <code>1</code> deb chiqarib berasiz.`,
+        tests: [
+            { input: "5\ndollar", output: "42500" },
+            { input: "8500\nso'm", output: "1" },
+            { input: "3500000\nso'm", output: "412" },
+        ],
+        example: {}
+    },
+    {
+        id: '5535d4da',
+        text: "Dasturga sozlarni vergul bilan ajratib chop eting.",
+        tests: [
+            { input: "Taqvim uchar ohangrabo unsur riyoziyot", output: "Taqvim, uchar, ohangrabo, unsur, riyoziyot" },
+            { input: "bir ikki uch tort", output: "bir, ikki, uch, tort" },
+            { input: "Pishloq sarimsoq", output: "Pishloq, sarimsoq" },
+        ],
+        example: {}
+    },
+    {
+        id: 'b8add081',
+        text: `Dasturga "salomlashish" satr berilsa "Assalomu alaykum!" chop eting.
+            Dasturga 'hayrlashish' satr berilgan bo'lsa "Sog' bo'ling" chop eting.`,
+        tests: [
+            { input: "salomlashish", output: "Assalomu alaykum!" },
+            { input: "hayrlashish", output: "Sog' bo'ling" },
+        ],
+        example: {}
+    },
+    {
+        id: '98525911',
+        text: `Dasturga ism berilsa, u taklifnomani chop etishi kerak.`,
+        tests: [
+            {
+                input: "Kamollidin",
+                output: "Assalomu alaykum xurmatli Kamollidin! Sizni mehmonga taklif kilyapmiz. Kamollidin, sizni kutamiz."
+            },
+            {
+                input: "Akmal",
+                output: "Assalomu alaykum xurmatli Akmal! Sizni mehmonga taklif kilyapmiz. Akmal, sizni kutamiz."
+            },
+        ],
+        example: {}
+    },
+    // {
+    //     id: '822664e4',
+    //     text: `Qaysi avto'ulo'v tezroq?`,
+    //     tests: [
+    //         {
+    //             input: "Kamollidin",
+    //             output: ""
+    //         },
+    //         {
+    //             input: "Akmal",
+    //             output: "Assalomu alaykum xurmatli Akmal! Sizni mehmonga taklif kilyapmiz. Akmal, sizni kutamiz."
+    //         },
+    //     ],
+    //     example: {}
+    // },
+    {
+        id: '095fa892',
         text: "Ikkita sonni qo'shadigan dasturni tuzing.",
         tests: [
             { "input": "435 33", "output": "468" },
@@ -48,7 +291,7 @@ stdin.addListener("data", function(kiritilgan_malumot) {
         },
     },
     {
-        id: 2,
+        id: 'cbb68a33',
         text: "Ikkita sonni kopaytiradigan dasturni tuzing.",
         tests: [
             { "input": "30 40", "output": "1200" },
@@ -58,7 +301,7 @@ stdin.addListener("data", function(kiritilgan_malumot) {
         example: {}
     },
     {
-        id: 3,
+        id: 'f0270bc6',
         text: "Berilgan 10 sonlarni ichida eng kattasini toping.",
         tests: [
             { "input": "4 4 54 22 -43 122 4343 0 1 44", "output": "4343" },
@@ -120,7 +363,7 @@ echo $engKattaSon;`
         }
     },
     {
-        id: 4,
+        id: '50a275d6',
         text: `Berilgan 10 sonlarni ichida eng kop qaytaraladiganini toping.
             Shunaqa sonla bir-nechta bo'lsa, birinchi uchraganini tanlang.`,
         tests: [
@@ -131,7 +374,7 @@ echo $engKattaSon;`
         example: {}
     },
     {
-        id: 5,
+        id: '321e57b7',
         text: `Pitsani narxini aniqlang. Pitsa Amerikano - 30 000 so'm.
             Pitsa Italiano - 32 000 so'm. Pitsani 6 km dan kamroq masofadan
             buyruq qilishsa, olib kelishi - 5 000 so'm. Bo'lmasa - har bir
@@ -144,7 +387,7 @@ echo $engKattaSon;`
         example: {}
     },
     {
-        id: 6,
+        id: '86aa4708',
         text: `Dorixonada bir nechta dorilar bor. Ularni ichida yaroqlik muddati
             o'tkan dorilar ham bor. Sizga dorilarni royxati beriladi. Yaroq emas dorilarni
             chop etishiz kerak. Birinchi qatorda berilgan sana bugungi sana deb o'ylang.
@@ -177,7 +420,7 @@ echo $engKattaSon;`
         example: {}
     },
     {
-        id: 7,
+        id: '7f8686fc',
         text: `Sizda do'kon bor. Do'konda har bitta sotilgan narsani siz
             komputerga kiritasiz. Bugun qancha pul topganizni hisoblaydigan
             dasturni tuzing.`,
