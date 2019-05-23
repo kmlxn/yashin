@@ -20,8 +20,8 @@ export default class extends Component {
           <li className={this.makeElemClassName({ value, highlighted })}
             key={value}
             onClick={() => this.onChange(value)}
+            dangerouslySetInnerHTML={{__html: children}}
           >
-            {children}
           </li>
         )}
     </ul>

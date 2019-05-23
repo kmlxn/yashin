@@ -42,7 +42,7 @@ class App extends Component {
   state = {
     languageId: languages[0].id,
     exerciseId: exercises[0].id,
-    code: exercises[0].example[languages[0].id],
+    code: exercises[0].example[languages[0].id] || "",
     input: exercises[0].tests[0].input,
     expectedOutput: exercises[0].tests[0].output,
     result: '',
@@ -120,7 +120,7 @@ class App extends Component {
   }
 
   onChangeExercise (exerciseIdStr) {
-    const exerciseId = +exerciseIdStr;
+    const exerciseId = exerciseIdStr;
     const exercise = exercises.find(({ id }) => id === exerciseId);
 
     this.setState({
@@ -172,7 +172,7 @@ class App extends Component {
               {languageOptions}
             </select>
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-12">
             <p>Masala</p>
             <ScrollableSelect
               value={this.state.exerciseId}

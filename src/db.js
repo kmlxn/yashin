@@ -141,14 +141,14 @@ export const exercises = [
     {
         id: 'e57c6ff0',
         text: `Foydalanuvchidan oylik maoshini so'rang va soliqni inobatga olishni yoki olmaslikni so'rang. Yiliga topadigan pulini hisoblab bering.
-        <code>
+        <pre><code>
 800000
 ha
-        </code> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
-        <code>
+        </code></pre> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
+        <pre><code>
 1000000
 yo'q
-        </code> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
+        </code></pre> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
         tests: [
             { input: "100000\nha", output: "900000" },
             { input: "800000\nyo'q", output: "9600000" },
@@ -159,14 +159,14 @@ yo'q
     {
         id: 'db80efbc',
         text: `Foydalanuvchidan oylik maoshini so'rang va soliqni inobatga olishni yoki olmaslikni so'rang. Foydalanuvchi 90% oylik maoshini sarflaydi. Yiliga saqlaydigan pulini hisoblab bering.
-        <code>
+        <pre><code>
 800000
 ha
-        </code> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
-        <code>
+        </code></pre> deb kiritsa, demak oylik maoshi 800000 ga teng, va soliqni inobadga olish kerak.
+        <pre><code>
 1000000
 yo'q
-        </code> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
+        </code></pre> deb kiritsa, demak oylik maoshi 1000000 ga teng, va soliqni inobadga olish kerak emas.`,
         tests: [
             { input: "100000\nha", output: "90000" },
             { input: "800000\nyo'q", output: "960000" },
@@ -177,14 +177,14 @@ yo'q
     {
         id: 'ed792c04',
         text: `Foydalanuvchidan pulni so'rang va valyutani so'rang. Va kiritgan miqdorini boshqa valyutaga aylantirib bering.
-        <code>
+        <pre><code>
 5
 dollar
-        </code> deb kiritsa, demak 5 dollarni so'mga aylantirish kerak. Demak <code>42500</code> deb chiqarib bershingiz kerak (1 dollar 8500 so'm deymiz).
-        <code>
+        </code></pre> deb kiritsa, demak 5 dollarni so'mga aylantirish kerak. Demak <code>42500</code> deb chiqarib bershingiz kerak (1 dollar 8500 so'm deymiz).
+        <pre><code>
 8500
 so'm
-        </code> deb kiritsa, demak 8500 so'mni dollarga aylantirish kerak. Demak <code>1</code> deb chiqarib berasiz.`,
+        </code></pre> deb kiritsa, demak 8500 so'mni dollarga aylantirish kerak. Demak <code>1</code> deb chiqarib berasiz.`,
         tests: [
             { input: "5\ndollar", output: "42500" },
             { input: "8500\nso'm", output: "1" },
