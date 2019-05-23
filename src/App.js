@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { exercises, languages } from './db'
+import { exercises, languages, themes } from './db'
 import CodeMirrorComponent from './CodeMirrorComponent'
 import ScrollableSelect from './ScrollableSelect'
 import { isExercisePassed, saveExerciseResults } from './exerciseResults'
@@ -45,6 +45,7 @@ class App extends Component {
     code: exercises[0].example[languages[0].id] || "",
     input: exercises[0].tests[0].input,
     expectedOutput: exercises[0].tests[0].output,
+    theme: localStorage.theme || 'solarized light',
     result: '',
     warnings: '',
     errors: '',
@@ -52,6 +53,13 @@ class App extends Component {
     runButtonsDisabled: false,
     isTesting: false,
     isRunningOnce: false
+  }
+
+  componentDidMount () {
+    var bs = document.getElementById('bootstrap-css')
+    if (this.state.theme === 'darcula') {
+      bs.href = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css'
+    }
   }
 
   async test () { 
@@ -141,13 +149,26 @@ class App extends Component {
       code: exercise.example[languageId] || "",
     })
   }
+  onChangeTheme (event) {
+    const theme = event.target.value;
+
+    this.setState({
+      theme,
+    })
+
+    localStorage.theme = theme
+
+    window.location.reload()
+  }
 
   render() {
     const languageOptions =
-      languages.map(({ id, name}) => <option key={id} value={id}>{name}</option>)
+      languages.map(({ id, name }) => <option key={id} value={id}>{name}</option>)
+    const themeOptions =
+      themes.map(theme => <option key={theme} value={theme}>{theme}</option>)
     
     return (
-      <div className="container">
+      <div className={"container " + this.state.theme}>
         <div className="row">
           <div className="col-lg-12">
             <div className="page-header">
@@ -172,6 +193,17 @@ class App extends Component {
               {languageOptions}
             </select>
           </div>
+          <div className="col-sm-6">
+            <p>Mavzu</p>
+            <select
+              className="form-control"
+              value={this.state.theme}    
+              style={{ display: 'block' }}
+              onChange={(event) => this.onChangeTheme(event)}
+            >
+              {themeOptions}
+            </select>
+          </div>
           <div className="col-sm-12">
             <p>Masala</p>
             <ScrollableSelect
@@ -194,6 +226,7 @@ class App extends Component {
               code={this.state.code}
               languageId={this.state.languageId}
               onCodeChange={code => this.setState({ code })}
+              theme={this.state.theme}
             />
           </div>
         </div>

@@ -7,7 +7,10 @@ export const exercises = [
             { input: "Hayrli tong", output: "Hayrli tong" },
             { input: "Taqvim, uchar, ohangrabo, unsur, riyoziyot.", output: "Taqvim, uchar, ohangrabo, unsur, riyoziyot." },
         ],
-        example: {}
+        example: {
+            24: `kiritilgan_malumot = input()
+print(kiritilgan_malumot)`,
+        }
     },
     {
         id: '197d6cda',
@@ -533,4 +536,10 @@ export const editorLanguages = [
     { languageId: 25, mode: { mime: 'text/x-octave' }, url: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/mode/octave/octave.min.js' },
     { languageId: 38, mode: { mime: 'text/x-sh' }, url: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/mode/shell/shell.min.js' },
     { languageId: 40, mode: { mime: 'text/x-erlang' }, url: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/mode/erlang/erlang.min.js' },
+]
+
+
+export const themes = [
+    'solarized light',
+    'darcula',
 ]

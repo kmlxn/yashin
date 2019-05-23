@@ -16,7 +16,7 @@ export default class extends Component {
       document.getElementById('dastur'),
       {
         lineNumbers: true,
-        theme: 'solarized light'
+        theme: this.props.theme || 'solarized light'
       }
     )
 
