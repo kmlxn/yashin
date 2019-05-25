@@ -113,6 +113,10 @@ pre {
 }
 
 
+.solarized.light {
+  background-color: #fffdf7;
+}
+
 .solarized.light .form-control, .solarized.light .CodeMirror {
   background-color: #fdf6e3;
   color: #839496;
@@ -147,6 +151,12 @@ pre {
   color: #839496;
 }
 
+.solarized.light .alert-danger {
+  background-color: #fdf6e3;
+  border-color: #cb4b16;
+  color: #839496;
+}
+
 .solarized.light .scrollable-select {
   background-color: #fdf6e3;
   color: #839496;
@@ -175,8 +185,17 @@ pre {
 
 .darcula .scrollable-select .active {
   background-color: rgb(68, 68, 68);
+  color: rgba(255, 255, 255, 0.904);
 }
 
+.darcula  .scrollable-select > .highlighted {
+  border: 2px solid #008966;
+}
+
+.darcula select, .darcula input, .darcula textarea, .darcula textarea[readonly] {
+  background-color: rgb(68, 68, 68);
+  color: #a9b7c6;
+}
 
 @media (max-width: 600px) {
   .form-control, .CodeMirror {
