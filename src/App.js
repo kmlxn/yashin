@@ -60,6 +60,7 @@ class App extends Component {
     if (this.state.theme === 'darcula') {
       bs.href = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css'
     }
+    document.getElementById('yuklanyapti').style.display = 'none'
   }
 
   async test () { 
@@ -168,175 +169,177 @@ class App extends Component {
       themes.map(theme => <option key={theme} value={theme}>{theme}</option>)
     
     return (
-      <div className={"container " + this.state.theme}>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="page-header">
-            
-            <h1>
-              <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
-              Yashin
-            </h1>
-              <p className="lead">Assalomu alaykum. Yashin – dasturlashni o'rganish uchun sayt.</p>
+      <main className={this.state.theme}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="page-header">
+              
+              <h1>
+                <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
+                Yashin
+              </h1>
+                <p className="lead">Assalomu alaykum. Yashin – dasturlashni o'rganish uchun sayt.</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6">
-            <p>Til</p>
-            <select
-              className="form-control"
-              value={this.state.languageId}    
-              style={{ display: 'block' }}
-              onChange={(event) => this.onChangeLanguage(event)}
-            >
-              {languageOptions}
-            </select>
+          <div className="row">
+            <div className="col-sm-6">
+              <label>Til</label>
+              <select
+                className="form-control"
+                value={this.state.languageId}    
+                style={{ display: 'block' }}
+                onChange={(event) => this.onChangeLanguage(event)}
+              >
+                {languageOptions}
+              </select>
+            </div>
+            <div className="col-sm-6">
+              <label>Ko'rinish mavzusi</label>
+              <select
+                className="form-control"
+                value={this.state.theme}    
+                style={{ display: 'block' }}
+                onChange={(event) => this.onChangeTheme(event)}
+              >
+                {themeOptions}
+              </select>
+            </div>
           </div>
-          <div className="col-sm-6">
-            <p>Mavzu</p>
-            <select
-              className="form-control"
-              value={this.state.theme}    
-              style={{ display: 'block' }}
-              onChange={(event) => this.onChangeTheme(event)}
-            >
-              {themeOptions}
-            </select>
-          </div>
-          <div className="col-sm-12">
-            <p>Masala</p>
-            <ScrollableSelect
-              value={this.state.exerciseId}
-              onChange={value => this.onChangeExercise(value)}
-              elems={exercises.map(({ id, text }) =>
-                ({
-                  value: id,
-                  children: text,
-                  highlighted: isExercisePassed({ id, languageId: this.state.languageId })
-                }))
-              }
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <p>Dastur</p>
-            <CodeMirrorComponent
-              code={this.state.code}
-              languageId={this.state.languageId}
-              onCodeChange={code => this.setState({ code })}
-              theme={this.state.theme}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6">
-            <p>Kirish</p>
-            <textarea
-              className="form-control code"
-              rows="3"
-              value={this.state.input}
-              onChange={event => this.setState({ input: event.target.value })}
-            ></textarea>
-          </div>
-          <div className="col-sm-6">
-            <p>Kutilgan natija</p>
-            <textarea
-              readOnly
-              className="form-control code"
-              rows="3"
-              value={this.state.expectedOutput}
-            ></textarea>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-3" style={{ textAlign: 'right', marginTop: '30px' }}>          
-            <button
-              disabled={this.state.runButtonsDisabled}
-              className="btn btn-primary"
-              onClick={event => this.run()}
-            >
-              {this.state.isRunningOnce && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}
-              Bajarish
-            </button>
-          </div>
-          <div className="col-xs-3" style={{ marginTop: '30px' }}>              
-            <button
-              disabled={this.state.runButtonsDisabled}
-              className="btn btn-primary"
-              onClick={event => this.test()}
-            >
-              {this.state.isTesting && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}              
-              Tekshirish
-            </button>
-          </div>
-        </div>
-        <hr />
-        <div className="row">
-          {
-            this.state.testResults &&
+          <div className="row">
             <div className="col-sm-12">
-              <div className={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
-                <h4>Tekshiruv natijarali: {this.state.testsPassed ? 'yaxshi' : 'yomon'}</h4>
-                {
-                  this.state.testResults
-                    .map((tr, index) => <div key={index}>
-                      {
-                        tr.passed
-                        ? <p>O'tdi: Ha</p>
-                        : <p><strong>O'tdi: Yo'q</strong></p>
-                      }
-                      <div>Kiritilgan ma'lumotlar: <pre>{tr.input}</pre></div>
-                      <div>Kutilgan ma'lumotlar: <pre>{tr.output}</pre></div>
-                      {tr.result && <div>Dastur qaytargan ma'lumotlar: <pre>{tr.result}</pre></div>}
-                      {tr.errors && <div>Xatoliklar: <pre>{tr.errors}</pre></div>}
-                      {tr.warnings && <div>Ogohlantirishlar: <pre>{tr.warnings}</pre></div>}
-                      <p>Hisobot: {tr.stats}</p>
-                      <hr />
-                    </div>)
+              <label>Masala</label>
+              <ScrollableSelect
+                value={this.state.exerciseId}
+                onChange={value => this.onChangeExercise(value)}
+                elems={exercises.map(({ id, text }) =>
+                  ({
+                    value: id,
+                    children: text,
+                    highlighted: isExercisePassed({ id, languageId: this.state.languageId })
+                  }))
                 }
-              </div>  
+              />
             </div>
-          }
-          {
-            this.state.result &&
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <label>Dastur</label>
+              <CodeMirrorComponent
+                code={this.state.code}
+                languageId={this.state.languageId}
+                onCodeChange={code => this.setState({ code })}
+                theme={this.state.theme}
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-6">
+              <label>Kirish</label>
+              <textarea
+                className="form-control code"
+                rows="3"
+                value={this.state.input}
+                onChange={event => this.setState({ input: event.target.value })}
+              ></textarea>
+            </div>
+            <div className="col-sm-6">
+              <label>Kutilgan natija</label>
+              <textarea
+                readOnly
+                className="form-control code"
+                rows="3"
+                value={this.state.expectedOutput}
+              ></textarea>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-3" style={{ marginTop: '30px' }}>          
+              <button
+                disabled={this.state.runButtonsDisabled}
+                className="btn btn-primary"
+                onClick={event => this.run()}
+              >
+                {this.state.isRunningOnce && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}
+                Bajarish
+              </button>
+              <button
+                disabled={this.state.runButtonsDisabled}
+                className="btn btn-primary"
+                onClick={event => this.test()}
+              >
+                {this.state.isTesting && <span className="glyphicon glyphicon-repeat fast-right-spinner"></span>}              
+                Tekshirish
+              </button>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            {
+              this.state.testResults &&
+              <div className="col-sm-12">
+                <div className={`alert ${this.state.testsPassed ? 'alert-success' : 'alert-danger'}`}>
+                  <h4>Tekshiruv natijarali: {this.state.testsPassed ? 'yaxshi' : 'yomon'}</h4>
+                  {
+                    this.state.testResults
+                      .map((tr, index) => <div key={index}>
+                        {
+                          tr.passed
+                          ? <p>O'tdi: Ha</p>
+                          : <p><strong>O'tdi: Yo'q</strong></p>
+                        }
+                        <div>Kiritilgan ma'lumotlar: <pre>{tr.input}</pre></div>
+                        <div>Kutilgan ma'lumotlar: <pre>{tr.output}</pre></div>
+                        {tr.result && <div>Dastur qaytargan ma'lumotlar: <pre>{tr.result}</pre></div>}
+                        {tr.errors && <div>Xatoliklar: <pre>{tr.errors}</pre></div>}
+                        {tr.warnings && <div>Ogohlantirishlar: <pre>{tr.warnings}</pre></div>}
+                        <p>Hisobot: {tr.stats}</p>
+                        <hr />
+                      </div>)
+                  }
+                </div>  
+              </div>
+            }
+            {
+              this.state.result &&
+                <div className="col-sm-6">              
+                  <div className="alert alert-info">
+                    <h4>Natija</h4>
+                    <div><pre>{this.state.result}</pre></div>
+                  </div>
+                </div>
+            }
+            {
+              this.state.errors &&
+                <div className="col-sm-6">              
+                  <div className="alert alert-danger">
+                    <h4>Xatolik</h4>
+                    <pre>{this.state.errors}</pre>
+                  </div>
+                </div>
+            }
+            {
+              this.state.warnings &&
+                <div className="col-sm-6">              
+                  <div className="alert alert-warning">
+                    <h4>Ogohlantirishlar</h4>
+                    <pre>{this.state.warnings}</pre>
+                  </div>
+                </div>
+            }
+            {
+              this.state.stats &&
               <div className="col-sm-6">              
                 <div className="alert alert-info">
-                  <h4>Natija</h4>
-                  <div><pre>{this.state.result}</pre></div>
+                  <h4>Hisobot</h4>
+                  <p>{this.state.stats}</p>
                 </div>
               </div>
-          }
-          {
-            this.state.errors &&
-              <div className="col-sm-6">              
-                <div className="alert alert-danger">
-                  <h4>Xatolik</h4>
-                  <pre>{this.state.errors}</pre>
-                </div>
-              </div>
-          }
-          {
-            this.state.warnings &&
-              <div className="col-sm-6">              
-                <div className="alert alert-warning">
-                  <h4>Ogohlantirishlar</h4>
-                  <pre>{this.state.warnings}</pre>
-                </div>
-              </div>
-          }
-          {
-            this.state.stats &&
-            <div className="col-sm-6">              
-              <div className="alert alert-info">
-                <h4>Hisobot</h4>
-                <p>{this.state.stats}</p>
-              </div>
-            </div>
-          }
+            }
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 }

@@ -1,24 +1,35 @@
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Consolas, 'Courier New', monospace;
+  font-family: 'Open Sans', sans-serif;;
   font-size: 16px;
-  color: #839496;
-}
-
-.code {
-  font-family: Consolas, 'Courier New', monospace;
+  color: rgb(97, 97, 97);
 }
 
 .form-control, .CodeMirror {
   font-size: 20px;
-  font-family: Consolas, 'Courier New', monospace;
   box-shadow: unset !important;
   -webkit-box-shadow: unset !important;
   -moz-box-shadow: unset !important;
   border-style: solid;
   border-width: 3px 3px 3px 3px;
   border-radius: 2px;
+}
+
+.form-control {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.CodeMirror {
+  font-family: Consolas, 'Courier New', monospace;
+}
+
+.code {
+  font-family: Consolas, 'Courier New', monospace;
 }
 
 .form-control:focus, .CodeMirror-focused {
@@ -39,6 +50,10 @@ pre {
   border-radius: 2px;  
 }
 
+code {
+  font-family: Consolas, 'Courier New', monospace;
+}
+
 .btn-primary {
   text-transform: lowercase;
   border-radius: 2px;  
@@ -56,10 +71,10 @@ pre {
 }
 
 .scrollable-select {
-  height: 200px;
+  height: 350px;
   overflow: auto;
   font-size: 16px;
-  font-family: Consolas, 'Courier New', monospace;
+  font-family: 'Open Sans', sans-serif;;
   border-style: solid;
   border-width: 3px 3px 3px 3px;
   border-radius: 2px;
@@ -72,6 +87,11 @@ pre {
   cursor: pointer;
 }
 
+.scrollable-select li {
+  border-bottom: 1px solid #000;
+  padding: 20px;
+}
+
 .scrollable-select > .highlighted:before {
   content: "\e013";
   font-family: 'Glyphicons Halflings';
@@ -80,6 +100,18 @@ pre {
 
 .btn {
   border-width: 3px 3px 3px 3px;  
+}
+
+
+label {
+  font-weight: 700;
+  color: rgb(97, 97, 97);
+  background-color: rgba(128, 128, 128, 0.2);
+  display: block;
+  margin: 0;
+  text-transform: uppercase;
+  padding: 10px;
+  padding-left: 15px;
 }
 
 .glyphicon.fast-right-spinner {
@@ -114,13 +146,19 @@ pre {
 
 
 .solarized.light {
-  background-color: #fffdf7;
+  background-color: #fdf6e3;
 }
 
 .solarized.light .form-control, .solarized.light .CodeMirror {
-  background-color: #fdf6e3;
-  color: #839496;
-  border-color: #eae4d2;
+  color: rgb(97, 97, 97);
+  border: none;
+  outline: none;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.solarized.light .CodeMirror-gutters {
+  background-color: unset;
 }
 
 .solarized.light  .form-control:focus, .solarized.light .CodeMirror-focused {
@@ -130,11 +168,17 @@ pre {
 .solarized.light pre {
   background-color: #eee8d5;  
 }
+.solarized.light .CodeMirror pre {
+  background-color: unset;  
+}
 
 .solarized.light .btn-primary {
-  color: #839496;
-  background-color: #fdf6e3;
-  border-color: #eee8d5;  
+  color: white;
+  background-color: rgb(181, 137, 0);
+  border: none;
+  border-radius: 0;
+  padding: 10px 14px;
+  margin-right: 20px;
 }
 
 .solarized.light .btn-primary:hover, .solarized.light .btn-primary:active, .solarized.light .btn-primary:focus,
@@ -158,17 +202,17 @@ pre {
 }
 
 .solarized.light .scrollable-select {
-  background-color: #fdf6e3;
-  color: #839496;
-  border-color: #eae4d2;
+  color: rgb(97, 97, 97);
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .solarized.light .scrollable-select .active {
-  background-color: antiquewhite;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .solarized.light .form-control[readonly] {
-  background-color: #fdf6e3;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .solarized.light .alert-success hr {
@@ -176,11 +220,14 @@ pre {
 }
 
 .solarized.light h1 {
-  color: #f2e6c4;
+  color: rgb(97, 97, 97);
 }
 
-.solarized.light .scrollable-select > * {
-  border-bottom: 1px solid #eeeeee;
+.solarized.light .scrollable-select > li:first-of-type {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.solarized.light .scrollable-select > li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .darcula .scrollable-select .active {
@@ -195,6 +242,10 @@ pre {
 .darcula select, .darcula input, .darcula textarea, .darcula textarea[readonly] {
   background-color: rgb(68, 68, 68);
   color: #a9b7c6;
+}
+
+.form-control {
+  height: unset;
 }
 
 @media (max-width: 600px) {
