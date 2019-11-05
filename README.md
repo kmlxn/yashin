@@ -1,2 +1,2 @@
 O'zbekcha dasturlash
-https://yashin.dasturlash.com
+https://yashin.subh.org
