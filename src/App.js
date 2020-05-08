@@ -172,15 +172,12 @@ class App extends Component {
       <main className={this.state.theme}>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-12">
-              <div className="page-header">
-              
+            <div className="col-lg-12" className='header'>
               <h1>
-                <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
-                Yashin
+                <object id="svg1" style={{ width: '36px', height: '36px', marginBottom: '-6px', marginLeft: '-6px' }} data="/bolt.svg" type="image/svg+xml">Logo</object>
+                YASHIN
               </h1>
-                <p className="lead">Assalomu alaykum. Yashin – dasturlashni o'rganish uchun sayt.</p>
-              </div>
+                <p className="lead">Dasturlash masalalari</p>
             </div>
           </div>
           <div className="row">
